@@ -12,3 +12,5 @@ cb(null, file.fieldname + '-' + uniqueSuffix);
 });
 
 const upload = multer({ storage: storage });
+
+export default upload;
