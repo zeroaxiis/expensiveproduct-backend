@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv/config';
 import cors from 'cors';
-import userRouter from './routes/user.routes.js';
+import db from './config/db.js';
 
 
 //server function
@@ -19,8 +19,10 @@ app.use(express.json());
 app.use(cors(corsOptions));
 
 //routes
-app.get('/');
-app.use("/api/user", userRouter);
+app.get('/',(req,res)=>{
+    res.send("Welcome to the Expense Manager API")
+});
+
 
 
 
