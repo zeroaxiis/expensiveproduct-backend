@@ -13,9 +13,10 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "node scripts/migrate.js",
     "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio"},
+    "db:studio": "drizzle-kit studio"
+  },
   "dependencies": {
-    "bcryptjs": "^3.0.3",
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "drizzle-kit": "^0.31.7",
