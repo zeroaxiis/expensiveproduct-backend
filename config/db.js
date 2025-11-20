@@ -12,11 +12,11 @@ if (!process.env.DB_URI) {
 const pool = new Pool({
   connectionString: process.env.DB_URI,
   ssl: {
-    rejectUnauthorized: false // Required for Neon
+    rejectUnauthorized: false 
   }
 });
 
-// Create Drizzle instance with schema
+
 const db = drizzle(pool, { schema });
 
 // Test connection
@@ -30,4 +30,4 @@ pool.on('error', (err) => {
 });
 
 export default db;
-export { pool }; // Export pool if needed for raw queries
+export { pool }; 

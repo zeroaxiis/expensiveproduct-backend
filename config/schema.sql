@@ -3,7 +3,6 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 
 -- 1. USERS TABLE
-
 CREATE TABLE IF NOT EXISTS users (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   name VARCHAR(255) NOT NULL,
@@ -29,7 +28,6 @@ CREATE TABLE IF NOT EXISTS user_settings (
 
 
 -- 3. REFRESH TOKENS TABLE
-
 CREATE TABLE IF NOT EXISTS refresh_tokens (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -40,7 +38,6 @@ CREATE TABLE IF NOT EXISTS refresh_tokens (
 
 
 -- 4. CATEGORIES TABLE
-
 CREATE TABLE IF NOT EXISTS categories (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   user_id UUID REFERENCES users(id) ON DELETE CASCADE, -- NULL = system default category
@@ -57,7 +54,6 @@ CREATE TABLE IF NOT EXISTS categories (
 
 
 --  Unique system categories
-
 CREATE UNIQUE INDEX IF NOT EXISTS unique_system_category_name
   ON categories (name)
   WHERE user_id IS NULL;
