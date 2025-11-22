@@ -8,7 +8,7 @@ import userRoutes from './route/user.route.js';
 //server function
 const app = express();
 const corsOptions = {
-    origin: 'http://localhost:3001',
+    origin: 'http://localhost:3002',
     credentials: true,
     methods: ['GET','POST','PUT','PATCH','DELETE','OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
@@ -19,6 +19,7 @@ const corsOptions = {
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
 
 //routes
 app.get('/',(req,res)=>{

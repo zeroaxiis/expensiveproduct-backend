@@ -25,15 +25,19 @@ const userSignup = asyncHandler(async (req, res) => {
     //hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await db.insert(users).values({
-        email,
-        name,
-        passwordHash: hashedPassword
-    });
+    try {
+        await db.insert(users).values({
+            email,
+            name,
+            passwordHash: hashedPassword
+        });
 
-    return res.status(201).json(
-        new ApiResponse(201, {}, "user registered successfully")
-    );
+        return res.status(201).json(
+            new ApiResponse(201, userSignup, "user registered successfully")
+        )
+    } catch {
+        throw new ApiError(400, "something went wrong while registering the user")
+    }
 });
 
 const userLogin = async (req, res) => {
